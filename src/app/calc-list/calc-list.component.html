@@ -1,1 +1,7 @@
-<p>calc-list works!</p>
+<<h1>Calculators:</h1>
+<ul>
+  <li *ngFor="let calc of calcs">
+    <!-- (click)="onSelect(calc)"> -->
+    {{calc.name}}
+  </li>
+</ul>
