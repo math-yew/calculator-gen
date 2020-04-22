@@ -14,4 +14,10 @@ export class CalculatorsService {
   getCalcs(): Observable<calcType[]>{
     return of(SAMPLECALCS);
   }
+
+  getCalc(id:number): Observable<calcType>{
+    console.log("id service: " + id);
+    console.log("SAMPLECALCS: " + SAMPLECALCS.map(calc => calc.id));
+    return of (SAMPLECALCS.find(calc => calc.id === id))
+  }
 }

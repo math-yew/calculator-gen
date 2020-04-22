@@ -21,4 +21,8 @@ export class CalcListComponent implements OnInit {
     this.calcService.getCalcs()
       .subscribe(calcs => this.calcs = calcs)
   }
+
+  viewCalc(calc:calcType): void{
+    console.log(calc);
+  }
 }

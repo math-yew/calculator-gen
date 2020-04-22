@@ -1,7 +1,9 @@
-<<h1>Calculators:</h1>
+<h1>Calculators:</h1>
 <ul>
-  <li *ngFor="let calc of calcs">
-    <!-- (click)="onSelect(calc)"> -->
-    {{calc.name}}
+  <li *ngFor="let calc of calcs"
+    (click)="viewCalc(calc)">
+    <a routerLink="/calculator/{{calc.id}}">
+      {{calc.name}}
+    </a>
   </li>
 </ul>

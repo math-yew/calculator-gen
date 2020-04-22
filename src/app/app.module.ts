@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EditComponent } from './edit/edit.component';
 import { CalcListComponent } from './calc-list/calc-list.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
