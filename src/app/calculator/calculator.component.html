@@ -1,6 +1,12 @@
-<p>Calculator works!</p>
+<p>:{{equation}}:</p>
 <div *ngIf="calc">
   <p>Worked</p>
-  <p>{{calc.name}}</p>
-  <p>{{calc.calc}}</p>
+  <h1>{{calc.name}}</h1>
+  <h3>{{calc.calc}}</h3>
+  <p *ngFor="let vari of variables">
+    {{vari}}:
+    <input [(ngModel)]="vari.name" placeholder="{{vari}}"/>
+  </p>
 </div>
+<button (click)="lastView()">Go Back</button>
+<button routerLink="/edit/{{calc.id}}">Edit</button>
