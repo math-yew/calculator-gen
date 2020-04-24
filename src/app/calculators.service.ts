@@ -16,10 +16,6 @@ export class CalculatorsService {
   }
 
   getCalc(id:number): Observable<calcType>{
-    console.log("id service: " + id);
-    console.log("SAMPLECALCS: " + SAMPLECALCS.map(calc => calc.id));
-    console.log("==: " + SAMPLECALCS.map(calc => calc.id == id));
-    console.log("===: " + SAMPLECALCS.map(calc => calc.id === id));
     return of (SAMPLECALCS.find(calc => calc.id == id))
   }
 }

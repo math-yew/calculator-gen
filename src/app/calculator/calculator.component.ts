@@ -12,7 +12,7 @@ import { CalculatorsService } from '../calculators.service';
 })
 export class CalculatorComponent implements OnInit {
   calc: calcType;
-  equation: string;
+  equation: object;
   variables: Array<string>;
 
   constructor(
@@ -28,18 +28,31 @@ export class CalculatorComponent implements OnInit {
   getCalc(): void{
     const id = this.route.snapshot.paramMap.get("id");
     this.calcService.getCalc(id)
-      // .subscribe(calc => this.calc = calc );
       .subscribe(calc => this.setVariables(calc));
   }
 
   setVariables(calc): void{
-    console.log("potaoes!: " + calc.calc);
     this.calc = calc;
-    this.equation = calc.calc;
-    let arr = this.equation.match(/([A-z]+|\=)/g);
-    var lastIndex = arr.indexOf("=");
-    this.variables = arr.slice(0,lastIndex);
-    console.log("this.variables: " + this.variables);
+    this.equation = {calc: calc.calc};
+    let arr = this.equation.calc.match(/([A-z]+|\=)/g);
+    let lastIndex = arr.indexOf("=");
+    let variables = arr.slice(0,lastIndex);
+    variables.map(v=>this.equation[v]=0);
+    this.equation.variables = variables;
+    this.equation.resultName = arr[arr.length-1];
+    let obj = this.equation;
+    for(let key in obj){
+      console.log(key + ": " + obj[key]);
+    }
+  }
+
+  calculate(): void{
+    let eq = this.equation;
+    let calc = eq.calc.replace(/\=.*/g,"");
+    let variables = eq.variables;
+    variables.map(vari=>calc=calc.replace(vari,eq[vari]));
+    console.log("CALC: " + calc);
+    this.equation.result = eval(calc);
   }
 
   lastView(): void{
