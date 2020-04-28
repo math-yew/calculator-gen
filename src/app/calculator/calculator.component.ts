@@ -13,7 +13,6 @@ import { CalculatorsService } from '../calculators.service';
 export class CalculatorComponent implements OnInit {
   calc: calcType;
   equation: object;
-  variables: Array<string>;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,10 +39,6 @@ export class CalculatorComponent implements OnInit {
     variables.map(v=>this.equation[v]=0);
     this.equation.variables = variables;
     this.equation.resultName = arr[arr.length-1];
-    let obj = this.equation;
-    for(let key in obj){
-      console.log(key + ": " + obj[key]);
-    }
   }
 
   calculate(): void{
@@ -51,7 +46,6 @@ export class CalculatorComponent implements OnInit {
     let calc = eq.calc.replace(/\=.*/g,"");
     let variables = eq.variables;
     variables.map(vari=>calc=calc.replace(vari,eq[vari]));
-    console.log("CALC: " + calc);
     this.equation.result = eval(calc);
   }
 
