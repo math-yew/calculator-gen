@@ -7,6 +7,8 @@ var sys = require('util')
 var exec = require('child_process').exec;
 var app = module.exports = express();
 
+console.log("potatoes");
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
@@ -19,10 +21,11 @@ app.use(function(req, res, next) {
  });
 
 ///////////////////////////////////////////////////////
-var mu = config.MASSIVE_URI.split("");
-mu.splice(15,4,"iqlr");
-mu.splice(36,5,"4NEtO");
-var massiveUri = mu.join("");
+// var mu = config.MASSIVE_URI.split("");
+// mu.splice(15,4,"iqlr");
+// mu.splice(36,5,"4NEtO");
+// var massiveUri = mu.join("");
+var massiveUri = config.MASSIVE_URI;
 var massiveServer = massive.connectSync({
   connectionString: massiveUri
 });

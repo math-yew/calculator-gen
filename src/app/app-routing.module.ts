@@ -6,7 +6,7 @@ import { CalculatorComponent }      from './calculator/calculator.component';
 import { EditComponent }  from './edit/edit.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/calcList', pathMatch: 'full' },
   { path: 'calcList', component: CalcListComponent },
   { path: 'calculator/:id', component: CalculatorComponent },
   { path: 'edit/:id', component: EditComponent }

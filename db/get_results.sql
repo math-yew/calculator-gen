@@ -1,1 +1,1 @@
-SELECT * FROM results
+SELECT * FROM calcs

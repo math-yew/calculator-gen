@@ -1,4 +1,4 @@
-var app = require('./ipTest.js');
+var app = require('./server.js');
 var db = app.get('db');
 var exec = require('child_process').exec;
 
