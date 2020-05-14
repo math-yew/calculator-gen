@@ -27,10 +27,18 @@ export class CalculatorsService {
       tap(_ => this.log('potato')),
       catchError(this.handleError<calcType>('getCalcs', []))
     );
+  }
+
+  updateCalc (calc: calcType): Observable<any> {
+    return this.http.put("http://localhost:3003/updateCalc", calc, this.httpOptions).pipe(
+      tap(_ => this.log(`updated calc id=${calc.id}`)),
+      catchError(this.handleError<any>('updateCalc'))
+    );
+  }
+
 
   // return this.http.request("GET","http://localhost:3002/allResults",{responseType:"json",params}).map(data => _.values(data))
             // .do(console.log);
-}
 
   getCalc(id:number): Observable<calcType>{
     return of(SAMPLECALCS.find(calc => calc.id == id));

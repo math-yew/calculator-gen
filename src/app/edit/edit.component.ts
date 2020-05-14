@@ -35,4 +35,11 @@ export class EditComponent implements OnInit {
   lastView(): void{
     this.location.back();
   }
+
+  updateCalc(): void{
+    this.calcService.updateCalc(this.calc);
+    // const id = this.route.snapshot.paramMap.get("id");
+    // this.calcService.updateCalc(id)
+    //   .subscribe(calc => this.setVariables(calc));
+  }
 }
